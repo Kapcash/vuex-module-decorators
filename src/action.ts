@@ -30,7 +30,7 @@ function actionDecoratorFactory<T>(params?: ActionDecoratorParams): MethodDecora
           const moduleName = getModuleName(module)
           const moduleAccessor = context.rootGetters[moduleName]
             ? context.rootGetters[moduleName]
-            : getModule(module as typeof VuexModule)
+            : getModule(module as typeof VuexModule, this)
           moduleAccessor.context = context
           actionPayload = await actionFunction.call(moduleAccessor, payload)
         } else {
